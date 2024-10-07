@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ListItem from './ListItem'
 import urlIcon from "../assets/url.png"
-const ButtonGroup = () => {
-    const [currentBtn, setCurrentBtn] = useState("")
+const ButtonGroup = ({ currentBtn, setCurrentBtn }) => {
+    //const { currentBtn, setCurrentBtn } = useContext(My)
     return (
         <div>
             <ListItem
@@ -12,7 +12,6 @@ const ButtonGroup = () => {
                 isSelected={currentBtn === "URL"}
                 onClick={() => {
                     setCurrentBtn("URL")
-                    console.log("Selected")
                 }} />
             <ListItem
                 iconUrl={urlIcon}
@@ -21,7 +20,6 @@ const ButtonGroup = () => {
                 isSelected={currentBtn === "EMAIL"}
                 onClick={() => {
                     setCurrentBtn("EMAIL")
-                    console.log("Selected")
                 }} />
         </div>
     )

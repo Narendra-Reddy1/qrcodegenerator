@@ -43,7 +43,7 @@
   transform: translateY(2px); /* "Press down" effect on click */
 }
 .option.selected{
-  background-color: black;
+  background-color: plum;
 }
 
 .option img{
@@ -72,6 +72,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   opacity: 1; /* Show tooltip when hovered */
+
 }
 
 /* Tooltip arrow */
@@ -113,6 +114,28 @@
 }
 
 
+/* Style for each input group */
+.input-group {
+  display: flex;
+  align-items: center; /* Aligns the label and input vertically */
+  margin-bottom: 15px; /* Spacing between input groups */
+}
+
+
+/* Style for the input fields */
+.input-group input {
+  width: 100%; /* Takes full width */
+  /* padding: 12px 20px; */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
 /* Style for the input container */
 .input {
   display: flex;
@@ -136,6 +159,15 @@
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
+}
+.input.email{
+
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    margin: 20px auto; /* Center it with margin */
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 /* Placeholder styling */
