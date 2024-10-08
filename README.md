@@ -1,8 +1,41 @@
-# React + Vite
+# QR Code Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and customizable QR code generator built with React. This project allows users to create QR codes, change their colors and patterns, and download or copy them for use in various applications. 
 
-Currently, two official plugins are available:
+[Live Version](https://qrgenerator-red.vercel.app/)
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Generate QR codes from URLs or email addresses.
+- Customize QR code colors and patterns.
+- Download QR codes as images.
+- Copy QR codes to the clipboard for easy sharing.
+
+## Technologies Used
+
+- React
+- Vite
+- JavaScript
+- CSS
+- [qrcode](https://www.npmjs.com/package/qrcode) package for QR code generation
+
+## Getting Started
+
+Follow these steps to set up the project on your local machine:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/Narendra-Redd1/qrcodegenerator.git
+   
+2. **Install dependencies:**
+    ```bash 
+    npm install
+3. **Run the development server:**
+   ```bash 
+   npm run dev
+ ##  Usage
+- Enter a URL or an email address in the respective input fields.
+- Choose a pattern and color for your QR code.
+- Click the Generate button to create your QR code.
+- You can download the QR code image or copy it to your  clipboard  using the provided buttons.
+
