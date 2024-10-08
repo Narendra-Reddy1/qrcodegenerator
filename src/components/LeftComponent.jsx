@@ -17,33 +17,37 @@ const LeftComponent = ({ qrColor, setQrUrl }) => {
     const formRef = useRef(null)
 
     const createQr = (content) => {
-        const patternColor = qrColor;
-        const bgColor = (patternColor == "#000000" ? "#FFFFFF" : "#000000")
-        console.log(content)
-        if (content)
-            QRCode.toDataURL(content, {
-                errorCorrectionLevel: 'H',
-                type: 'image/png',
-                width: 512,
-                quality: 1,
-                margin: 1,
-                color: {
-                    //dark: qrColor,//pattern color
-                    //light: "#000" //background color
-                    dark: patternColor,//pattern color
-                    light: bgColor //background color
-                }
-            }, function (err, url) {
-                if (err) {
-                    console.log(err);
-                    throw err;
-                }
-                var img = document.getElementById('qr');
-                setQrUrl(url);
-                img.src = url;
-            })
-        else
-            alert("Can't generate QR for empty content")
+        try {
+            const patternColor = qrColor;
+            const bgColor = (patternColor == "#000000" ? "#FFFFFF" : "#000000")
+            if (content)
+                QRCode.toDataURL(content, {
+                    errorCorrectionLevel: 'H',
+                    type: 'image/png',
+                    width: 512,
+                    quality: 1,
+                    margin: 1,
+                    color: {
+                        //dark: qrColor,//pattern color
+                        //light: "#000" //background color
+                        dark: patternColor,//pattern color
+                        light: bgColor //background color
+                    }
+                }, function (err, url) {
+                    if (err) {
+                        console.log(err);
+                        throw err;
+                    }
+                    var img = document.getElementById('qr');
+                    setQrUrl(url);
+                    img.src = url;
+                })
+            else
+                alert("Can't generate QR for empty content")
+        }
+        catch (e) {
+            alert(e.toString())
+        }
     }
 
     const generateEmailQr = () => {
