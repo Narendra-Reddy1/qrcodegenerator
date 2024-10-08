@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import ListItem from './ListItem'
 import urlIcon from "../assets/url.png"
+import emailIcon from "../assets/mail.png"
 const ButtonGroup = ({ currentBtn, setCurrentBtn }) => {
     //const { currentBtn, setCurrentBtn } = useContext(My)
     return (
@@ -14,7 +15,7 @@ const ButtonGroup = ({ currentBtn, setCurrentBtn }) => {
                     setCurrentBtn("URL")
                 }} />
             <ListItem
-                iconUrl={urlIcon}
+                iconUrl={emailIcon}
                 label={"EMAIL"}
                 toolTipText={"Opens the EMAIL after scanning."}
                 isSelected={currentBtn === "EMAIL"}

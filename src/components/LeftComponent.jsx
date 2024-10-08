@@ -1,4 +1,6 @@
 import React, { createContext, useCallback, useLayoutEffect, useRef, useState } from 'react'
+
+import generateIcon from "../assets/generate.png";
 import ButtonGroup from './ButtonGroup'
 import UrlField from './UrlField'
 import ListItem from './ListItem'
@@ -40,12 +42,17 @@ const LeftComponent = ({ qrColor, setQrUrl }) => {
                 setQrUrl(url);
                 img.src = url;
             })
+        else
+            alert("Can't generate QR for empty content")
     }
 
     const generateEmailQr = () => {
         const baseUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=';
         // Encode the subject and body to ensure special characters are handled correctly
-        if (!email) return;
+        if (!email) {
+            alert("Can't generate QR without 'to' address")
+            return;
+        }
         const toAddress = encodeURIComponent(email);
         const encodedSubject = encodeURIComponent(subject);
         const encodedBody = encodeURIComponent(message);
@@ -57,9 +64,10 @@ const LeftComponent = ({ qrColor, setQrUrl }) => {
         else {
             // If email is invalid, trigger shake animation
             setIsShaking(true);
-            setTimeout(() => setIsShaking(false), 500); // Remove shake class after animation
-            const msg = "Invalid Email"
-            createQr(msg);
+            setTimeout(() => {
+                setIsShaking(false)
+                alert("Invalid Email")
+            }, 500); // Remove shake class after animation
         }
         console.log("EMAIL.>>>> ", isEmailValid)
         //https://mail.google.com/mail/?view=cm&fs=1&to=narendrareddydasaganipalli%40gmail.com&su=Welcome&body=Hi+Narendra+Reddy%2C
@@ -108,7 +116,7 @@ const LeftComponent = ({ qrColor, setQrUrl }) => {
                 margin: '0'
             }}>
                 <ListItem
-                    iconUrl={null}
+                    iconUrl={generateIcon}
                     onClick={() => {
                         generateQr()
                     }}

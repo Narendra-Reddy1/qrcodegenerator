@@ -1,13 +1,14 @@
 import React from 'react'
 import ListItem from './ListItem';
+import downloadIcon from "../assets/download.png";
+import copyIcon from "../assets/copy.png";
+import frame from "../assets/frame.png";
 
 const QrPreview = ({ qrUrl, setQrColor }) => {
 
     const handleCopyImage = async () => {
-        console.log("COpying....", qrUrl)
         if (qrUrl) {
             // Convert the data URL to a Blob
-            console.log("COpying....")
             const response = await fetch(qrUrl);
             const blob = await response.blob(); // Create a Blob from the image URL
             const item = new ClipboardItem({ 'image/png': blob }); // Create a ClipboardItem
@@ -31,11 +32,19 @@ const QrPreview = ({ qrUrl, setQrColor }) => {
         <>
             <h3>QR Preview</h3>
             <div>
-                <img src="" alt="" id='qr' />
-                <br></br>  <input type="color" id='qrColor' onChange={(e) => setQrColor(e.target.value)}></input>
+                <img src={frame} alt="QR Preview" id='qr' />
+
+                <label className="color-picker-label">
+                    Choose Pattern Color
+                    <input
+                        type="color"
+                        className="color-picker-input"
+                        id='qrColor' onChange={(e) => setQrColor(e.target.value)}
+                    />
+                </label>
                 <div className='button-group'>
-                    <ListItem label={"Download"} onClick={handleDownload} extraId='downloadQr' />
-                    <ListItem label={"Copy"} onClick={handleCopyImage} />
+                    <ListItem label={"Download"} iconUrl={downloadIcon} onClick={handleDownload} extraId='downloadQr' />
+                    <ListItem label={"Copy"} iconUrl={copyIcon} onClick={handleCopyImage} />
                     {/* <button id='downloadQr' >Download</button>
                     <button id='copyQr' >Copy</button> */}
                 </div>
