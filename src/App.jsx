@@ -10,8 +10,10 @@ function App() {
 
   return (
     <div className='container'>
-      <LeftComponent qrColor={qrColor} setQrUrl={setQrUrl} />
-      <div className='box'>
+      <div className='left-component'>
+        <LeftComponent qrColor={qrColor} setQrUrl={setQrUrl} />
+      </div>
+      <div className='qr-preview'>
         <QrPreview qrUrl={qrUrl} setQrColor={setQrColor} />
       </div>
     </div >

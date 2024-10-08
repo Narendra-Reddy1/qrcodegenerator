@@ -7,17 +7,17 @@ import frame from "../assets/frame.png";
 const QrPreview = ({ qrUrl, setQrColor }) => {
 
     const handleCopyImage = async () => {
-        if (qrUrl) {
-            // Convert the data URL to a Blob
-            const response = await fetch(qrUrl);
-            const blob = await response.blob(); // Create a Blob from the image URL
-            const item = new ClipboardItem({ 'image/png': blob }); // Create a ClipboardItem
-            await navigator.clipboard.write([item]); // Write the ClipboardItem to the clipboard
-            alert('QR Code image copied to clipboard!'); // Notify the user
-        }
+        if (!qrUrl) return
+        // Convert the data URL to a Blob
+        const response = await fetch(qrUrl);
+        const blob = await response.blob(); // Create a Blob from the image URL
+        const item = new ClipboardItem({ 'image/png': blob }); // Create a ClipboardItem
+        await navigator.clipboard.write([item]); // Write the ClipboardItem to the clipboard
+        alert('QR Code image copied to clipboard!'); // Notify the user
     };
 
     const handleDownload = () => {
+        if (!qrUrl) return;
         const link = document.createElement('a'); // Create an anchor element
         //const link = document.getElementById("downloadQr")
         console.log("downloading.....")
@@ -30,8 +30,11 @@ const QrPreview = ({ qrUrl, setQrColor }) => {
 
     return (
         <>
-            <h3>QR Preview</h3>
-            <div>
+            <div className='qr-container'>
+                <h3>QR Preview</h3>
+            </div>
+            <div className='qr-container'>
+                <br />
                 <img src={frame} alt="QR Preview" id='qr' />
 
                 <label className="color-picker-label">

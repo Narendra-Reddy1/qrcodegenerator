@@ -3,7 +3,9 @@ import React from 'react'
 function EmailForm({ onEmailEntered, isValidEmail, setEmail, setSubject, setMessage, onSubmit }) {
     return (
         <>
-            <h3>Email QR Code</h3>
+            <div className='qr-container'>
+                <h3>Email QR Code</h3>
+            </div>
             <form onSubmit={(e) => {
                 //e.preventDefault();
                 onSubmit();
@@ -11,7 +13,7 @@ function EmailForm({ onEmailEntered, isValidEmail, setEmail, setSubject, setMess
             }}>
 
 
-                <div className="inputs">
+                <div>
                     <div className="input-group">
                         {/* <label htmlFor="email">Email:</label> */}
                         <input type="email" id="email" placeholder="Enter your email"

@@ -7,7 +7,7 @@ import ListItem from './ListItem'
 import EmailForm from './EmailForm'
 import QRCode from "qrcode"
 const LeftComponent = ({ qrColor, setQrUrl }) => {
-    const [currentBtn, setCurrentBtn] = useState("")
+    const [currentBtn, setCurrentBtn] = useState("URL")
     const [url, setUrl] = useState("")
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("")
@@ -36,14 +36,20 @@ const LeftComponent = ({ qrColor, setQrUrl }) => {
                 }, function (err, url) {
                     if (err) {
                         console.log(err);
-                        throw err;
+                        alert(err.toString())
+                        return;
                     }
                     var img = document.getElementById('qr');
                     setQrUrl(url);
                     img.src = url;
                 })
-            else
-                alert("Can't generate QR for empty content")
+            else {
+                setIsShaking(true);
+                setTimeout(() => {
+                    setIsShaking(false)
+                    alert("Can't generate QR without content")
+                }, 500); // Remove shake class after animation
+            }
         }
         catch (e) {
             alert(e.toString())
@@ -54,7 +60,13 @@ const LeftComponent = ({ qrColor, setQrUrl }) => {
         const baseUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=';
         // Encode the subject and body to ensure special characters are handled correctly
         if (!email) {
-            alert("Can't generate QR without 'to' address")
+
+            // If email is invalid, trigger shake animation
+            setIsShaking(true);
+            setTimeout(() => {
+                setIsShaking(false)
+                alert("Can't generate QR without 'to' address")
+            }, 500); // Remove shake class after animation
             return;
         }
         const toAddress = encodeURIComponent(email);
