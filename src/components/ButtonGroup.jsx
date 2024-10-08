@@ -4,7 +4,7 @@ import urlIcon from "../assets/url.png"
 const ButtonGroup = ({ currentBtn, setCurrentBtn }) => {
     //const { currentBtn, setCurrentBtn } = useContext(My)
     return (
-        <div>
+        <div className="button-group">
             <ListItem
                 iconUrl={urlIcon}
                 label={"URL"}
